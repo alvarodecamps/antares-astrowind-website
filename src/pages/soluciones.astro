@@ -1,0 +1,88 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { SEO as AstroSeo } from 'astro-seo';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+---
+
+<Layout>
+  <AstroSeo
+    title="Soluciones de Inversión"
+    description="Soluciones de capital privado: Alianza de Crecimiento (venta parcial) o Transición de Legado (venta total). Proceso confidencial 60-90 días."
+  />
+  <main class="container mx-auto py-16 px-4">
+    <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4">Soluciones de Inversión</h1>
+        <p class="text-xl text-muted dark:text-slate-400">Dos estructuras principales, diseñadas según sus objetivos y el futuro de su empresa.</p>
+    </div>
+
+    <Content
+        id="alianza-crecimiento"
+        title="Alianza de Crecimiento"
+        subtitle="Inyecte capital y experiencia para acelerar su visión."
+        items={[
+            {
+                title: '¿Para Quién?',
+                description: 'Empresas con oportunidades claras de expansión o profesionalización<br/>Dueños que desean liquidez parcial manteniendo rol activo<br/>Negocios sólidos que toparon su techo y necesitan un socio estratégico'
+            },
+            {
+                title: '¿Cómo Funciona?',
+                description: 'Invertimos en minoría o mayoría, según metas y alineación<br/>Usted mantiene liderazgo operativo o rol de consejo<br/>Trabajo de junta, plan de 100 días, M&A aditivo y disciplina de métricas'
+            },
+            {
+                title: '¿Qué Aportamos?',
+                description: 'Gobernanza, rigor comercial y de costos, tecnología, talento y acceso a red.'
+            }
+        ]}
+    />
+
+    <Content
+        id="transicion-legado"
+        isReversed
+        title="Transición de Legado"
+        subtitle="Asegure su futuro y el de la empresa que construyó."
+        items={[
+            {
+                title: '¿Para Quién?',
+                description: 'Fundadores cercanos al retiro sin sucesión definida<br/>Propietarios que buscan una salida completa y ordenada'
+            },
+            {
+                title: '¿Cómo Funciona?',
+                description: 'Adquirimos el 100% con un plan de transición sin sobresaltos<br/>Período opcional de asesoría del fundador<br/>Continuidad del equipo y respeto por la cultura'
+            },
+            {
+                title: '¿Qué Aportamos?',
+                description: 'Proceso discreto, valoración justa, cierre ágil y cuidado del legado.'
+            }
+        ]}
+    />
+
+    <Steps
+        title="Proceso ágil y confidencial (60–90 días)"
+        items={[
+            {
+                title: 'Exploración',
+                description: 'Objetivos, NDA, fit estratégico',
+                icon: 'tabler:search',
+            },
+            {
+                title: 'Pre-evaluación',
+                description: 'Información clave y oferta indicativa',
+                icon: 'tabler:file-text',
+            },
+            {
+                title: 'Due diligence',
+                description: 'Financiera, legal y operativa, con mínima disrupción',
+                icon: 'tabler:checkup-list',
+            },
+            {
+                title: 'Acuerdo y cierre',
+                description: 'Términos definitivos y plan de transición',
+                icon: 'tabler:file-check',
+            }
+        ]}
+    />
+
+  </main>
+</Layout>

@@ -29,6 +29,29 @@ const { language, textDirection } = I18N;
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
+    <meta name="author" content="Antares Equity Partners">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_DO">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Antares Equity Partners",
+      "description": "Firma de capital privado en República Dominicana",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Cub Scout #19",
+        "addressLocality": "Santo Domingo",
+        "addressRegion": "DN",
+        "postalCode": "10120",
+        "addressCountry": "DO"
+      },
+      "telephone": "+18095442082",
+      "email": "info@antaresep.com",
+      "url": "https://antaresep.com",
+      "areaServed": "República Dominicana",
+      "serviceType": ["Private Equity", "Growth Capital", "M&A Advisory"]
+    })} />
     <Favicons />
     <CustomStyles />
     <ApplyColorMode />

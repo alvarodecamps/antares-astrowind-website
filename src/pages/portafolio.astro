@@ -1,0 +1,72 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { SEO as AstroSeo } from 'astro-seo';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+---
+
+<Layout>
+  <AstroSeo
+    title="Empresas del Portafolio"
+    description="Portafolio Antares: Corotos, 7Labs, SAM Latinoamérica, Almomento.net. Empresas dominicanas líderes con ejecución disciplinada."
+  />
+  <main class="container mx-auto py-16 px-4">
+    <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4">Empresas excepcionales, ejecución disciplinada.</h1>
+    </div>
+
+    <ItemGrid
+        items={[
+            {
+                title: 'Corotos',
+                description: 'Clasificados online líder en RD. Referencia nacional para compra y venta.',
+                image: {
+                    src: '/src/assets/images/corotos-logo.png',
+                    alt: 'Corotos Logo',
+                },
+                href: 'https://corotos.com.do',
+                pills: ['Marketplace Digital'],
+            },
+            {
+                title: '7Labs',
+                description: 'Soluciones de punto de venta para microempresarios; relevante en recargas en RD y Haití.',
+                image: {
+                    src: '/src/assets/images/7labs-logo.png',
+                    alt: '7Labs Logo',
+                },
+                href: 'https://on7labs.com',
+                pills: ['Fintech / Pagos'],
+            },
+            {
+                title: 'SAM Latinoamérica',
+                description: 'Garantías extendidas y asistencias para retail. Plataforma regional.',
+                image: {
+                    src: '/src/assets/images/sam-logo.png',
+                    alt: 'SAM Latinoamérica Logo',
+                },
+                href: 'https://samlatinoamerica.com',
+                pills: ['Servicios Financieros'],
+            },
+            {
+                title: 'Almomento.net',
+                description: 'Periódico digital con alcance nacional y en la diáspora.',
+                image: {
+                    src: '/src/assets/images/almomento-logo.png',
+                    alt: 'Almomento.net Logo',
+                },
+                href: 'https://almomento.net',
+                pills: ['Medios Digitales'],
+            },
+        ]}
+    />
+    <CallToAction
+        actions={[
+            {
+                variant: 'primary',
+                text: 'Solicitar caso de estudio',
+                href: '/contacto?asunto=caso-estudio',
+            },
+        ]}
+    />
+  </main>
+</Layout>

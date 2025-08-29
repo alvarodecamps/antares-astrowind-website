@@ -1,0 +1,51 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Sobre Nosotros',
+  description: "Search fund convertido en firma de capital privado. Operadores locales con enfoque hands-on. Estructuras flexibles para empresarios dominicanos.",
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Content Section -->
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Nuestra historia: de emprendedores para emprendedores',
+        description: 'Nacimos como **search fund** con una misión simple: encontrar una gran empresa dominicana, operarla codo a codo y llevarla al siguiente nivel.<br/><br/>El éxito de esa primera adquisición cimentó nuestro enfoque operador-local y la creación de **Antares Equity Partners** como plataforma para asociarnos con más empresarios.<br/><br/>Preferimos posiciones mayoritarias con **estructuras flexibles** cuando aporta valor al vendedor y a la compañía.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/about-us.jpg',
+      alt: 'Antares Team',
+    }}
+  />
+
+  <!-- Team Section -->
+  <Features2
+    title="Nuestro equipo"
+    columns={3}
+    items={[
+      {
+        title: '[Nombre Apellido]',
+        description: 'Experiencia operativa, gobierno corporativo y raíces en la comunidad empresarial dominicana.',
+        icon: 'tabler:user-circle',
+      },
+      {
+        title: '[Nombre Apellido]',
+        description: 'Experiencia operativa, gobierno corporativo y raíces en la comunidad empresarial dominicana.',
+        icon: 'tabler:user-circle',
+      },
+      {
+        title: '[Nombre Apellido]',
+        description: 'Experiencia operativa, gobierno corporativo y raíces en la comunidad empresarial dominicana.',
+        icon: 'tabler:user-circle',
+      },
+    ]}
+  />
+
+</Layout>

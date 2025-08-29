@@ -1,78 +1,68 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+import Contact from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contacto',
+  description: "Contacte Antares Equity Partners. Conversación 100% confidencial. Santo Domingo, RD. info@antaresep.com +1 809 544 2082",
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <HeroText
+    tagline="Contacto"
+    title="Iniciemos una conversación 100% confidencial"
+    subtitle="Sin compromiso. Entendemos la sensibilidad del tema y manejamos todo con discreción."
+  />
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
-  <ContactUs
+  <Contact
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Enviar mensaje confidencial"
+    subtitle="Gracias. Nos pondremos en contacto en las próximas 24 horas hábiles."
     inputs={[
       {
         type: 'text',
-        name: 'name',
-        label: 'Name',
+        name: 'nombre',
+        label: 'Nombre completo',
+        required: true,
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
+        label: 'Correo electrónico',
+        required: true,
+      },
+      {
+        type: 'text',
+        name: 'telefono',
+        label: 'Teléfono',
       },
     ]}
     textarea={{
-      label: 'Message',
+      label: 'Mensaje',
+      name: 'mensaje',
     }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
   />
 
-  <!-- Features2 Widget ************** -->
-
   <Features2
-    title="We are here to help!"
+    columns={1}
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'Dirección',
+        description: 'Calle Cub Scout #19<br/>Naco, Santo Domingo, DN 10120<br/>República Dominicana',
+        icon: 'tabler:map-pin',
       },
       {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
+        title: 'Teléfono',
+        description: '+1 809 544 2082',
         icon: 'tabler:headset',
       },
       {
         title: 'Email',
-        description: 'contact@support.com',
+        description: 'info@antaresep.com',
         icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
       },
     ]}
   />

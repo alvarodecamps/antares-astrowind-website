@@ -1,0 +1,64 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { SEO as AstroSeo } from 'astro-seo';
+import Features from '~/components/widgets/Features.astro';
+import Note from '~/components/widgets/Note.astro';
+---
+
+<Layout>
+  <AstroSeo
+    title="Centro de Recursos"
+    description="Guías gratuitas para empresarios: valoración, preparación para venta, sucesión familiar. Recursos para empresas >US$5M en ventas."
+  />
+  <main class="container mx-auto py-16 px-4">
+    <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4">Recursos para Empresarios</h1>
+    </div>
+
+    <Features
+        columns={2}
+        items={[
+            {
+                title: '📊 Guía: ¿Está listo para vender?',
+                description: 'Señales personales y de negocio',
+                icon: 'tabler:download',
+                callToAction: {
+                    text: 'Descargar guía',
+                    href: '#',
+                }
+            },
+            {
+                title: '✅ Checklist: Documentos para transacción',
+                description: 'Documentos y procesos para una transacción fluida',
+                icon: 'tabler:download',
+                callToAction: {
+                    text: 'Ver checklist',
+                    href: '#',
+                }
+            },
+            {
+                title: '🧮 Calculadora indicativa',
+                description: 'Estimación basada en EBITDA y caja',
+                icon: 'tabler:calculator',
+                callToAction: {
+                    text: 'Calcular valor',
+                    href: '#',
+                }
+            },
+            {
+                title: '💡 Perspectivas del mercado',
+                description: 'Nearshoring, profesionalización y sucesión familiar',
+                icon: 'tabler:article',
+                callToAction: {
+                    text: 'Leer perspectivas',
+                    href: '#',
+                }
+            },
+        ]}
+    />
+    <Note
+        label="ℹ️"
+        text="Si su empresa factura > US$5M y tiene caja recurrente, probablemente califica para conversar."
+    />
+  </main>
+</Layout>
