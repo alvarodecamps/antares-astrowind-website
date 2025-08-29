@@ -3,6 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 import { SEO as AstroSeo } from 'astro-seo';
 import Features from '~/components/widgets/Features.astro';
 import Note from '~/components/widgets/Note.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import PictureOptimized from '~/components/common/PictureOptimized.astro';
+import SectionDivider from '~/components/ui/SectionDivider.astro';
 ---
 
 <Layout>
@@ -10,14 +13,18 @@ import Note from '~/components/widgets/Note.astro';
     title="Centro de Recursos"
     description="Guías gratuitas para empresarios: valoración, preparación para venta, sucesión familiar. Recursos para empresas >US$5M en ventas."
   />
-  <section class="relative not-prose bg-dark overflow-hidden isolate">
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-      <h1 class="text-3xl md:text-4xl font-heading font-bold text-gray-100 text-center">Recursos para Empresarios</h1>
-      <p class="text-slate-300 text-center mt-2">Guías prácticas para decisiones de capital y sucesión</p>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
-  </section>
+  <HeroText
+    tagline="Recursos"
+    title="Recursos para Empresarios"
+    subtitle="Guías prácticas para decisiones de capital y sucesión"
+  >
+    <Fragment slot="bg">
+      <PictureOptimized src="~/assets/images/header-inicio.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
+    </Fragment>
+  </HeroText>
+  <SectionDivider />
   <main class="container mx-auto py-16 px-4">
     
 
