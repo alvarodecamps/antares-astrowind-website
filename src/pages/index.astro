@@ -28,6 +28,20 @@ const metadata = {
     ]}
   >
     <Fragment slot="bg">
+      <!-- Optional background video; falls back to image poster -->
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="none" poster={heroBg.src} style="opacity:0;transition:opacity .6s ease">
+        <source src="/videos/hero.webm" type="video/webm" />
+        <source src="/videos/hero.mp4" type="video/mp4" />
+      </video>
+      <script is:inline>
+        // Fade in video once it can play
+        (function(){
+          const v = document.querySelector('video');
+          if (!v) return;
+          const onReady = () => { v.style.opacity = '1'; };
+          v.addEventListener('canplay', onReady, { once: true });
+        })();
+      </script>
       <PictureOptimized src="~/assets/images/hero-bg.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-center" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>

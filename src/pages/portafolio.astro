@@ -41,7 +41,7 @@ import SectionDivider from '~/components/ui/SectionDivider.astro';
       <h3 class="text-xl font-heading font-semibold mb-4 text-center">Casos destacados</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {portfolioCaseStudies.map((cs) => (
-          <article class="rounded-lg border border-gray-200 p-5 bg-white shadow-sm">
+          <article class="rounded-lg border border-gray-200 p-5 bg-white shadow-sm transform transition hover:-translate-y-0.5 hover:shadow-lg">
             <h4 class="font-semibold text-lg mb-1">{cs.name}</h4>
             {cs.subtitle && <p class="text-sm text-muted mb-2">{cs.subtitle}</p>}
             <ul class="list-disc pl-5 text-sm text-default space-y-1 mb-2">

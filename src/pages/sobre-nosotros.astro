@@ -48,10 +48,21 @@ const metadata = {
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
       {team.map((p) => (
         <article class="rounded-lg border border-gray-200 p-5 bg-white shadow-sm">
-          <header class="mb-3">
-            <h3 class="text-lg font-semibold">{p.name}</h3>
-            <p class="text-sm text-muted">{p.role}</p>
-          </header>
+          {p.photo && (
+            <div class="mb-3 flex items-center">
+              <img src={p.photo} alt={`Foto de ${p.name}`} class="w-14 h-14 rounded-full object-cover mr-3 border border-gray-200" />
+              <div>
+                <h3 class="text-lg font-semibold leading-tight">{p.name}</h3>
+                <p class="text-sm text-muted">{p.role}</p>
+              </div>
+            </div>
+          )}
+          {!p.photo && (
+            <header class="mb-3">
+              <h3 class="text-lg font-semibold">{p.name}</h3>
+              <p class="text-sm text-muted">{p.role}</p>
+            </header>
+          )}
           {p.bio && <p class="text-sm text-default mb-3">{p.bio}</p>}
           {p.bullets && p.bullets.length > 0 && (
             <ul class="list-disc pl-5 text-sm text-muted mb-3">
