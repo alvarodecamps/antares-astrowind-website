@@ -1,40 +1,26 @@
 ---
-import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+/* Use Google Fonts to match legacy site */
+/* Note: can be self-hosted later for performance/privacy */
 ---
 
 <style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --aw-font-serif: 'DM Sans', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --aw-font-heading: 'Montserrat', var(--aw-font-sans);
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Colors based on legacy antaresep.com */
+    --aw-color-primary: #9a96aa; /* buttons, hr */
+    --aw-color-secondary: #333333; /* footer, text on light backgrounds */
+    --aw-color-accent: #3a63d4; /* menu button / accents */
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-text-heading: #000000;
+    --aw-color-text-default: #222222;
+    --aw-color-text-muted: rgb(34 34 34 / 66%);
+    --aw-color-bg-page: #ffffff;
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    --aw-color-bg-page-dark: #030620;
 
     ::selection {
       background-color: lavender;
@@ -42,18 +28,18 @@ import '@fontsource-variable/inter';
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --aw-font-serif: 'DM Sans', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --aw-font-heading: 'Montserrat', var(--aw-font-sans);
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: #9a96aa;
+    --aw-color-secondary: #9a96aa; /* lighten links on dark */
+    --aw-color-accent: #6f8bf0;
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
+    --aw-color-text-heading: #f7f8f8;
+    --aw-color-text-default: #e5ecf6;
     --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    --aw-color-bg-page: #030620;
 
     ::selection {
       background-color: black;

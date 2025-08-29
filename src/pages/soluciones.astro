@@ -4,6 +4,10 @@ import { SEO as AstroSeo } from 'astro-seo';
 import Content from '~/components/widgets/Content.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import PictureOptimized from '~/components/common/PictureOptimized.astro';
+import headerSoluciones from '~/assets/images/header-soluciones.jpg';
+import SectionDivider from '~/components/ui/SectionDivider.astro';
 ---
 
 <Layout>
@@ -11,11 +15,19 @@ import Features from '~/components/widgets/Features.astro';
     title="Soluciones de Inversión"
     description="Soluciones de capital privado: Alianza de Crecimiento (venta parcial) o Transición de Legado (venta total). Proceso confidencial 60-90 días."
   />
+  <HeroText
+    tagline="Soluciones"
+    title="Estructuras a su medida"
+    subtitle="Alianza de Crecimiento o Transición de Legado"
+  >
+    <Fragment slot="bg">
+      <PictureOptimized src="~/assets/images/header-soluciones.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
+    </Fragment>
+  </HeroText>
+  <SectionDivider />
   <main class="container mx-auto py-16 px-4">
-    <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl font-bold mb-4">Soluciones de Inversión</h1>
-        <p class="text-xl text-muted dark:text-slate-400">Dos estructuras principales, diseñadas según sus objetivos y el futuro de su empresa.</p>
-    </div>
 
     <Content
         id="alianza-crecimiento"
@@ -55,6 +67,45 @@ import Features from '~/components/widgets/Features.astro';
                 title: '¿Qué Aportamos?',
                 description: 'Proceso discreto, valoración justa, cierre ágil y cuidado del legado.'
             }
+        ]}
+    />
+
+    <Features
+        id="criterios"
+        title="Criterios de Inversión"
+        subtitle="Nos enfocamos en empresas dominicanas con escala, caja y potencial de crecimiento."
+        columns={3}
+        items={[
+          {
+            title: 'Ventas Anuales',
+            description: '> US$5 millones',
+            icon: 'tabler:currency-dollar',
+          },
+          {
+            title: 'EBITDA',
+            description: '> US$1 millón',
+            icon: 'tabler:scale',
+          },
+          {
+            title: 'Participación',
+            description: 'Minoría significativa, mayoría o 100%',
+            icon: 'tabler:percentage',
+          },
+          {
+            title: 'Sectores',
+            description: 'Servicios, tecnología aplicada, distribución, manufactura liviana, medios digitales',
+            icon: 'tabler:building-factory-2',
+          },
+          {
+            title: 'Geografía',
+            description: 'República Dominicana (Caribe selecto)',
+            icon: 'tabler:map-2',
+          },
+          {
+            title: 'Horizonte',
+            description: '5–10 años, enfoque de creación de valor',
+            icon: 'tabler:timeline',
+          },
         ]}
     />
 

@@ -2,6 +2,11 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import PictureOptimized from '~/components/common/PictureOptimized.astro';
+import headerSobre from '~/assets/images/header-sobre.jpg';
+import { team } from '~/data/team';
+import SectionDivider from '~/components/ui/SectionDivider.astro';
 
 const metadata = {
   title: 'Sobre Nosotros',
@@ -10,6 +15,18 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <HeroText
+    tagline="Sobre Nosotros"
+    title="Operadores locales con visión de largo plazo"
+    subtitle="Alianzas que respetan el legado y aceleran el crecimiento"
+  >
+    <Fragment slot="bg">
+      <PictureOptimized src="~/assets/images/header-sobre.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
+    </Fragment>
+  </HeroText>
+  <SectionDivider />
   <!-- Content Section -->
   <Content
     isReversed
@@ -26,26 +43,34 @@ const metadata = {
   />
 
   <!-- Team Section -->
-  <Features2
-    title="Nuestro equipo"
-    columns={3}
-    items={[
-      {
-        title: '[Nombre Apellido]',
-        description: 'Experiencia operativa, gobierno corporativo y raíces en la comunidad empresarial dominicana.',
-        icon: 'tabler:user-circle',
-      },
-      {
-        title: '[Nombre Apellido]',
-        description: 'Experiencia operativa, gobierno corporativo y raíces en la comunidad empresarial dominicana.',
-        icon: 'tabler:user-circle',
-      },
-      {
-        title: '[Nombre Apellido]',
-        description: 'Experiencia operativa, gobierno corporativo y raíces en la comunidad empresarial dominicana.',
-        icon: 'tabler:user-circle',
-      },
-    ]}
-  />
+  <section class="container mx-auto px-4 py-8 md:py-12">
+    <h2 class="text-2xl md:text-3xl font-heading font-semibold text-center mb-8">Nuestro equipo</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {team.map((p) => (
+        <article class="rounded-lg border border-gray-200 p-5 bg-white shadow-sm">
+          <header class="mb-3">
+            <h3 class="text-lg font-semibold">{p.name}</h3>
+            <p class="text-sm text-muted">{p.role}</p>
+          </header>
+          {p.bio && <p class="text-sm text-default mb-3">{p.bio}</p>}
+          {p.bullets && p.bullets.length > 0 && (
+            <ul class="list-disc pl-5 text-sm text-muted mb-3">
+              {p.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          )}
+          <footer class="flex gap-3 text-sm">
+            {p.email && (
+              <a href={`mailto:${p.email}`} class="text-secondary hover:underline">Email</a>
+            )}
+            {p.linkedin && (
+              <a href={p.linkedin} target="_blank" rel="noopener" class="text-secondary hover:underline">LinkedIn</a>
+            )}
+          </footer>
+        </article>
+      ))}
+    </div>
+  </section>
 
 </Layout>

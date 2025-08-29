@@ -23,11 +23,15 @@ export const headerData = {
       href: getPermalink('/recursos'),
     },
     {
+      text: 'Perspectivas',
+      href: getPermalink('/blog'),
+    },
+    {
       text: 'Contacto',
       href: getPermalink('/contacto'),
     },
   ],
-  actions: [{ text: 'Iniciar conversación', href: '/contacto' }],
+  actions: [],
 };
 
 export const footerData = {
@@ -39,6 +43,7 @@ export const footerData = {
         { text: 'Portafolio', href: getPermalink('/portafolio') },
         { text: 'Sobre Nosotros', href: getPermalink('/sobre-nosotros') },
         { text: 'Recursos', href: getPermalink('/recursos') },
+        { text: 'Perspectivas', href: getPermalink('/blog') },
       ],
     },
     {
@@ -50,8 +55,8 @@ export const footerData = {
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Términos', href: getPermalink('/terms') },
+    { text: 'Política de Privacidad', href: getPermalink('/privacy') },
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/antares-equity-partners' },

@@ -1,9 +1,10 @@
 ---
 import { SITE } from 'astrowind:config';
+import logoLight from '~/assets/images/logo-antares-light.png';
+import logoDark from '~/assets/images/logo-antares-dark.png';
 ---
 
-<span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
->
-  🚀 {SITE?.name}
-</span>
+<picture class="block h-12 md:h-14">
+  <source srcset={logoDark.src} media="(prefers-color-scheme: dark)" />
+  <img src={logoLight.src} alt={SITE?.name} class="h-full w-auto object-contain" loading="eager" fetchpriority="high" />
+</picture>

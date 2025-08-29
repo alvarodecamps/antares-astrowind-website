@@ -8,6 +8,6 @@
       "~/*": ["src/*"]
     }
   },
-  "include": [".astro/types.d.ts", "src/**/*.ts", "src/**/*.astro", "tests/**/*.ts"],
+  "include": [".astro/types.d.ts", "src/**/*.ts", "src/**/*.astro", "tests/**/*.ts", "src/data/**/*.md"],
   "exclude": ["node_modules", "dist", "*.config.js", "*.config.cjs"]
 }

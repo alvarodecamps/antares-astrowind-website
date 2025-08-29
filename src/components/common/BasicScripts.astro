@@ -141,6 +141,34 @@ import { UI } from 'astrowind:config';
         ticking = true;
       }
     });
+
+    // Analytics bindings
+    function gtagEvent(event, params = {}) {
+      if (window.gtag) {
+        window.gtag('event', event, params);
+      }
+    }
+    attachEvent('[data-gtag-event]', 'click', function (e, el) {
+      const name = el.getAttribute('data-gtag-event');
+      const label = el.getAttribute('aria-label') || el.textContent?.trim() || el.getAttribute('href') || '';
+      gtagEvent(name || 'click', { label, path: location.pathname });
+    });
+    attachEvent('a[href^="mailto:"]', 'click', function (e, el) {
+      const email = el.getAttribute('href')?.replace('mailto:', '') || '';
+      gtagEvent('contact_mail', { email, path: location.pathname });
+    });
+    attachEvent('a[href^="tel:"]', 'click', function (e, el) {
+      const phone = el.getAttribute('href')?.replace('tel:', '') || '';
+      gtagEvent('contact_tel', { phone, path: location.pathname });
+    });
+    attachEvent('a[href$=.pdf]', 'click', function (e, el) {
+      const href = el.getAttribute('href') || '';
+      gtagEvent('download_pdf', { href, path: location.pathname });
+    });
+    attachEvent('form', 'submit', function (e, el) {
+      const id = el.getAttribute('id') || 'form';
+      gtagEvent('form_submit', { id, path: location.pathname });
+    });
   };
   const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
@@ -162,6 +190,98 @@ import { UI } from 'astrowind:config';
     onLoad();
     onPageShow();
   });
+</script>
+
+<script is:inline>
+  // UTM population and CRM submission (HubSpot/Pipedrive/email fallback)
+  (function () {
+    const params = new URLSearchParams(location.search);
+    const get = (k) => params.get(k) || '';
+
+    function fillHidden() {
+      const ids = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','page_url','referrer','timestamp'];
+      const values = {
+        utm_source: get('utm_source'),
+        utm_medium: get('utm_medium'),
+        utm_campaign: get('utm_campaign'),
+        utm_term: get('utm_term'),
+        utm_content: get('utm_content'),
+        page_url: location.href,
+        referrer: document.referrer || '',
+        timestamp: new Date().toISOString(),
+      };
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.value = values[id] || '';
+      });
+    }
+
+    function bindSubmit() {
+      const form = document.querySelector('form[data-crm-form]');
+      if (!form) return;
+      form.addEventListener('submit', async (e) => {
+        try {
+          // GA event
+          if (window.gtag) {
+            window.gtag('event', 'form_submit', { id: form.getAttribute('id') || 'lead-form', path: location.pathname });
+          }
+          const portal = (window.HS_PORTAL_ID || '').toString();
+          const formGuid = (window.HS_FORM_GUID || '').toString();
+          if (portal && formGuid) {
+            e.preventDefault();
+            const fd = new FormData(form);
+            const fields = [];
+            fd.forEach((value, name) => fields.push({ name, value: String(value) }));
+            const payload = {
+              fields,
+              context: {
+                pageUri: location.href,
+                pageName: document.title,
+                hutk: (document.cookie.match(/hubspotutk=([^;]+)/) || [])[1] || undefined,
+              },
+            };
+            const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${formGuid}`;
+            const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (res.ok) {
+              alert('Gracias. Hemos recibido su mensaje.');
+              form.reset();
+              return;
+            } else {
+              console.warn('HubSpot submission failed', await res.text());
+            }
+          }
+          const pdUrl = (window.PIPEDRIVE_WEBFORM_URL || '').toString();
+          if (pdUrl) {
+            e.preventDefault();
+            const fd = new FormData(form);
+            await fetch(pdUrl, { method: 'POST', body: fd, mode: 'no-cors' });
+            alert('Gracias. Hemos recibido su mensaje.');
+            form.reset();
+            return;
+          }
+          // Email fallback
+          const email = 'info@antaresep.com';
+          const name = (form.querySelector('[name="nombre"]') || {}).value || '';
+          const phone = (form.querySelector('[name="telefono"]') || {}).value || '';
+          const from = (form.querySelector('[name="email"]') || {}).value || '';
+          const msg = (form.querySelector('[name="mensaje"], #textarea') || {}).value || '';
+          const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${from}\nTeléfono: ${phone}\nMensaje: ${msg}\n\nUTM source: ${get('utm_source')}`);
+          window.location.href = `mailto:${email}?subject=Contacto Antares&body=${body}`;
+        } catch (err) {
+          console.error(err);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fillHidden();
+      bindSubmit();
+    });
+    document.addEventListener('astro:after-swap', () => {
+      fillHidden();
+      bindSubmit();
+    });
+  })();
 </script>
 
 <script is:inline>

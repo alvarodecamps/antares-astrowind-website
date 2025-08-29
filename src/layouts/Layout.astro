@@ -11,6 +11,7 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
+import CookieConsent from '~/components/common/CookieConsent.astro';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -33,6 +34,17 @@ const { language, textDirection } = I18N;
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_DO">
     <meta name="twitter:card" content="summary_large_image">
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} 
+      (function(){
+        try {
+          var consent = localStorage.getItem('aw_consent');
+          var analytics = consent === 'granted' ? 'granted' : 'denied';
+          gtag('consent','default', { 'analytics_storage': analytics });
+        } catch(e) {}
+      })();
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FinancialService",
@@ -67,5 +79,7 @@ const { language, textDirection } = I18N;
     <slot />
 
     <BasicScripts />
+    <!-- Cookie consent banner -->
+    {Astro.url.pathname !== '/privacy' && Astro.url.pathname !== '/terms' ? <CookieConsent /> : null}
   </body>
 </html>

@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hero Text Fixes - Force white text on hero sections */
+section[class*="min-h-"] h1,
+section[class*="min-h-"] h2,
+section[class*="min-h-"] p,
+section[class*="min-h-"] .text-white {
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9) !important;
+}
+
+/* Ensure all hero text is visible */
+section.relative[class*="min-h-"] * {
+  color: inherit;
+}
+
+/* Force text-white class */
+.text-white {
+  color: white !important;
+}
+
 @layer utilities {
   .bg-page {
     background-color: var(--aw-color-bg-page);
@@ -22,11 +41,11 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-md border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 cursor-pointer;
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white;
   }
 
   .btn-secondary {
@@ -34,36 +53,48 @@
   }
 
   .btn-tertiary {
-    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+    @apply btn border-none shadow-none text-muted hover:text-gray-900;
+  }
+
+  .btn-outline {
+    @apply btn bg-white text-gray-900 border-gray-900 hover:bg-gray-50;
   }
 }
 
 #header.scroll > div:first-child {
-  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
-  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+  @apply bg-page md:bg-white/95 md:backdrop-blur-md transition-all duration-300 ease-in-out;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
-  box-shadow: none;
+  @apply bg-page md:bg-slate-900/95 border-b border-gray-700/50 transition-all duration-300 ease-in-out;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
 }
 /* #header.scroll > div:last-child {
   @apply py-3;
 } */
 
 #header.expanded nav {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  bottom: 70px !important;
-  padding: 0 5px;
+  @apply fixed left-0 right-0 bottom-0 p-4 bg-white z-40 overflow-y-auto;
+  top: 4.5rem;
 }
 
 .dropdown:focus .dropdown-menu,
 .dropdown:focus-within .dropdown-menu,
 .dropdown:hover .dropdown-menu {
   display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 [astro-icon].icon-light > * {

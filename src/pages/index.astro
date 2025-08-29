@@ -6,6 +6,9 @@ import Features2 from '~/components/widgets/Features2.astro';
 import Features from '~/components/widgets/Features.astro';
 import Brands from '~/components/widgets/Brands.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import heroBg from '~/assets/images/hero-bg.jpg';
+import PictureOptimized from '~/components/common/PictureOptimized.astro';
+import { portfolioLogos } from '~/data/portfolio';
 
 const metadata = {
   title: 'Antares Equity Partners: Capital privado dominicano',
@@ -17,11 +20,17 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Section -->
   <Hero
+    class="min-h-screen"
     actions={[
-      { variant: 'primary', text: 'Iniciar conversación 100% confidencial', href: '/contacto' },
-      { variant: 'outline', text: 'Explorar soluciones', href: '/soluciones' },
+      { variant: 'primary', text: 'Iniciar conversación 100% confidencial', href: '/contacto', 'data-gtag-event': 'hero_contacto' },
+      { variant: 'outline', text: 'Explorar soluciones', href: '/soluciones', 'data-gtag-event': 'hero_soluciones' },
     ]}
   >
+    <Fragment slot="bg">
+      <PictureOptimized src="~/assets/images/hero-bg.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
+    </Fragment>
     <Fragment slot="title">
         El socio estratégico para el futuro de su empresa.
     </Fragment>
@@ -29,6 +38,11 @@ const metadata = {
         Capital y operación local para crecer o traspasar su legado con orden.
     </Fragment>
   </Hero>
+
+  <!-- Divider -->
+  <div class="relative">
+    <div class="h-px w-full max-w-7xl mx-auto bg-gradient-to-r from-transparent via-gray-200/60 to-transparent"></div>
+  </div>
 
   <!-- Metrics Section -->
   <Stats
@@ -95,10 +109,9 @@ const metadata = {
     subtitle='"Adevinta anuncia la venta de Corotos a emprendedores locales" — Prensa oficial'
   >
     <div class="flex flex-wrap justify-center gap-8">
-        <img src="/src/assets/images/corotos-logo.png" alt="Corotos" class="h-12" />
-        <img src="/src/assets/images/7labs-logo.png" alt="7Labs" class="h-12" />
-        <img src="/src/assets/images/sam-logo.png" alt="SAM Latinoamérica" class="h-12" />
-        <img src="/src/assets/images/almomento-logo.png" alt="Almomento.net" class="h-12" />
+      {portfolioLogos.map((l) => (
+        <img src={l.src} alt={l.alt} class="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" />
+      ))}
     </div>
   </Brands>
 

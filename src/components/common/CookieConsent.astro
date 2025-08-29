@@ -1,0 +1,42 @@
+---
+---
+
+<div id="cookie-consent" class="fixed inset-x-0 bottom-0 z-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 py-3">
+    <div class="rounded-md border border-gray-200 bg-white shadow-md px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <p class="text-sm text-gray-700">
+        Usamos cookies para analítica (GA4) y mejorar su experiencia. Puede aceptar o rechazar. Ver <a href="/privacy" class="underline">Política de Privacidad</a>.
+      </p>
+      <div class="flex gap-2">
+        <button id="cookie-reject" class="btn btn-outline text-sm py-2 px-4">Rechazar</button>
+        <button id="cookie-accept" class="btn-primary text-sm py-2 px-4 rounded-md">Aceptar</button>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    (function() {
+      const KEY = 'aw_consent';
+      const banner = document.getElementById('cookie-consent');
+      const accepted = localStorage.getItem(KEY);
+      function hide(){ banner.style.display = 'none'; }
+      function show(){ banner.style.display = 'block'; }
+      if (accepted === 'granted' || accepted === 'denied') {
+        hide();
+      } else {
+        show();
+      }
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      function updateConsent(val){
+        localStorage.setItem(KEY, val);
+        if (window.gtag) {
+          window.gtag('consent','update', { 'analytics_storage': val === 'granted' ? 'granted' : 'denied' });
+        }
+        hide();
+      }
+      acceptBtn && acceptBtn.addEventListener('click', function(){ updateConsent('granted'); });
+      rejectBtn && rejectBtn.addEventListener('click', function(){ updateConsent('denied'); });
+    })();
+  </script>
+</div>
+

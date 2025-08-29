@@ -1,0 +1,65 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { findImage } from '~/utils/images';
+import { getImagesOptimized, astroAssetsOptimizer } from '~/utils/images-optimization';
+
+export interface Props extends HTMLAttributes<'img'> {
+  src: string;
+  alt?: string;
+  widths?: number[];
+  sizes?: string;
+  layout?: 'fullWidth' | 'constrained' | 'fixed' | 'responsive' | 'cover' | 'contained';
+}
+
+const {
+  src,
+  alt = '',
+  widths = [640, 960, 1280, 1920, 2560],
+  sizes = '100vw',
+  class: className = '',
+  layout = 'fullWidth',
+  ...rest
+} = Astro.props as Props;
+
+const image = await findImage(src);
+
+const baseProps = {
+  src,
+  alt: alt || '',
+  widths,
+  sizes,
+  layout,
+  // Height/width are inferred via astro assets and sizes
+};
+
+const avif = image
+  ? await getImagesOptimized(image, { ...baseProps, format: 'avif' }, astroAssetsOptimizer)
+  : undefined;
+const webp = image
+  ? await getImagesOptimized(image, { ...baseProps, format: 'webp' }, astroAssetsOptimizer)
+  : undefined;
+const fallback = image ? await getImagesOptimized(image, { ...baseProps }, astroAssetsOptimizer) : undefined;
+---
+
+{
+  image && fallback ? (
+    <picture class={className}>
+      {avif?.attributes?.srcset && (
+        <source type="image/avif" srcset={avif.attributes.srcset} sizes={avif.attributes.sizes} />
+      )}
+      {webp?.attributes?.srcset && (
+        <source type="image/webp" srcset={webp.attributes.srcset} sizes={webp.attributes.sizes} />
+      )}
+      <img
+        src={fallback.src}
+        alt={alt}
+        srcset={fallback.attributes.srcset}
+        sizes={fallback.attributes.sizes}
+        loading="eager"
+        fetchpriority="high"
+        class={className}
+        {...rest}
+      />
+    </picture>
+  ) : null
+}

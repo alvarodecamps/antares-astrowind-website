@@ -3,6 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Contact from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import PictureOptimized from '~/components/common/PictureOptimized.astro';
+import headerContacto from '~/assets/images/header-contacto.jpg';
+import SectionDivider from '~/components/ui/SectionDivider.astro';
 
 const metadata = {
   title: 'Contacto',
@@ -15,7 +18,14 @@ const metadata = {
     tagline="Contacto"
     title="Iniciemos una conversación 100% confidencial"
     subtitle="Sin compromiso. Entendemos la sensibilidad del tema y manejamos todo con discreción."
-  />
+  >
+    <Fragment slot="bg">
+      <PictureOptimized src="~/assets/images/header-contacto.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
+    </Fragment>
+  </HeroText>
+  <SectionDivider />
 
   <Contact
     id="form"

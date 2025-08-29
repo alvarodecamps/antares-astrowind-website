@@ -10,10 +10,16 @@ import Note from '~/components/widgets/Note.astro';
     title="Centro de Recursos"
     description="Guías gratuitas para empresarios: valoración, preparación para venta, sucesión familiar. Recursos para empresas >US$5M en ventas."
   />
-  <main class="container mx-auto py-16 px-4">
-    <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl font-bold mb-4">Recursos para Empresarios</h1>
+  <section class="relative not-prose bg-dark overflow-hidden isolate">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold text-gray-100 text-center">Recursos para Empresarios</h1>
+      <p class="text-slate-300 text-center mt-2">Guías prácticas para decisiones de capital y sucesión</p>
     </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-[var(--aw-color-bg-page)] pointer-events-none"></div>
+  </section>
+  <main class="container mx-auto py-16 px-4">
+    
 
     <Features
         columns={2}
@@ -24,7 +30,8 @@ import Note from '~/components/widgets/Note.astro';
                 icon: 'tabler:download',
                 callToAction: {
                     text: 'Descargar guía',
-                    href: '#',
+                    href: '/docs/guia-comparacion-compradores.pdf',
+                    'data-gtag-event': 'download_guia_compradores',
                 }
             },
             {
