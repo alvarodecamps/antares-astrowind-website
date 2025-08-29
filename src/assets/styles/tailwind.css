@@ -70,6 +70,13 @@ section.relative[class*="min-h-"] * {
   @apply bg-page md:bg-slate-900/95 border-b border-gray-700/50 transition-all duration-300 ease-in-out;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
 }
+/* Header readability over hero */
+#header:not(.scroll) .header-inner {
+  @apply text-white;
+}
+#header.scroll .header-inner {
+  @apply text-default;
+}
 /* #header.scroll > div:last-child {
   @apply py-3;
 } */
