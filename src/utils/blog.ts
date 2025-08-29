@@ -57,7 +57,9 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     metadata = {},
   } = data;
 
-  const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
+  // Remove extension from id to avoid "-md" in slug, keep last path segment
+  const baseId = id.replace(/\.[^/.]+$/, '');
+  const slug = cleanSlug(baseId.split('/').pop() || baseId);
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
 

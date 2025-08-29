@@ -39,8 +39,9 @@ import Note from '~/components/widgets/Note.astro';
                 description: 'Documentos y procesos para una transacción fluida',
                 icon: 'tabler:download',
                 callToAction: {
-                    text: 'Ver checklist',
-                    href: '#',
+                    text: 'Solicitar checklist',
+                    href: '/contacto?asunto=checklist',
+                    'data-gtag-event': 'solicitar_checklist',
                 }
             },
             {
@@ -48,8 +49,9 @@ import Note from '~/components/widgets/Note.astro';
                 description: 'Estimación basada en EBITDA y caja',
                 icon: 'tabler:calculator',
                 callToAction: {
-                    text: 'Calcular valor',
-                    href: '#',
+                    text: 'Solicitar acceso',
+                    href: '/contacto?asunto=calculadora',
+                    'data-gtag-event': 'solicitar_calculadora',
                 }
             },
             {
@@ -58,7 +60,8 @@ import Note from '~/components/widgets/Note.astro';
                 icon: 'tabler:article',
                 callToAction: {
                     text: 'Leer perspectivas',
-                    href: '#',
+                    href: '/blog',
+                    'data-gtag-event': 'ir_blog',
                 }
             },
         ]}

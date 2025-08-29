@@ -71,7 +71,7 @@ export const portfolioCaseStudies: PortfolioCaseStudy[] = [
     situation: 'Clasificados online líder en República Dominicana con ~28M visitas mensuales (fuente: sitio oficial).',
     thesis: 'Consolidar liderazgo vía profesionalización operativa y optimización de monetización.',
     actions: ['Gobernanza y tablero de KPIs', 'Optimización de producto y motor de búsqueda', 'Data/analytics para pricing y campañas', 'Performance marketing y partnerships'],
-    kpis: ['Tráfico mensual ~28M (sitio oficial)', 'Liderazgo de categoría en RD'],
+    kpis: ['Tráfico mensual ~28M (sitio oficial)', 'Liderazgo de categoría en RD', 'Fuente: <a href="https://adevinta.com/press-releases/adevinta-divests-dominican-republic-marketplace-corotos/" target="_blank" rel="noopener">Adevinta PR</a>'],
     result: 'Crecimiento en ingresos y eficiencia operativa (en curso).',
   },
   {

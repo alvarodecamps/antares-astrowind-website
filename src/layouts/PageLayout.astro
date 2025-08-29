@@ -19,7 +19,8 @@ const { metadata } = Astro.props;
   <slot name="header">
     <Header {...headerData} isSticky position="left" />
   </slot>
-  <main>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-gray-900 focus:px-3 focus:py-2 focus:rounded">Saltar al contenido principal</a>
+  <main id="main">
     <slot />
   </main>
   <slot name="footer">
