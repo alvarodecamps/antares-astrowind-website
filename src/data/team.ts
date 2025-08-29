@@ -24,16 +24,15 @@ export const team: TeamPerson[] = [
   {
     name: 'Javier Andrés Lara Reinhold',
     role: 'Socio',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/larajavier/',
     bio: 'Perfil en preparación. Comparta su LinkedIn y puntos destacados para completar la biografía.',
     bullets: [],
   },
   {
     name: 'Sergio Darío Reyes Galvis',
     role: 'Socio',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/sdreyesg/',
     bio: 'Perfil en preparación. Comparta su LinkedIn y puntos destacados para completar la biografía.',
     bullets: [],
   },
 ];
-
