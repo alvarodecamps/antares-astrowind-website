@@ -23,16 +23,28 @@ export const team: TeamPerson[] = [
   },
   {
     name: 'Javier Andrés Lara Reinhold',
-    role: 'Socio',
+    role: 'Operaciones — Corotos',
     linkedin: 'https://www.linkedin.com/in/larajavier/',
-    bio: 'Perfil en preparación. Comparta su LinkedIn y puntos destacados para completar la biografía.',
-    bullets: [],
+    bio:
+      'Operador en Corotos con foco en crecimiento y ejecución. Lidera iniciativas de producto, monetización y eficiencia operativa, trabajando de la mano con la gerencia para consolidar liderazgo y mejorar la experiencia del usuario.',
+    bullets: [
+      'Corotos — iniciativas de producto y monetización',
+      'Optimización de procesos y eficiencia operativa',
+      'Analítica y tableros de control para decisiones',
+      'Trabajo de campo con equipo y socios clave',
+    ],
   },
   {
     name: 'Sergio Darío Reyes Galvis',
-    role: 'Socio',
+    role: 'Socio — Operaciones (Corotos, 7Labs)',
     linkedin: 'https://www.linkedin.com/in/sdreyesg/',
-    bio: 'Perfil en preparación. Comparta su LinkedIn y puntos destacados para completar la biografía.',
-    bullets: [],
+    bio:
+      'Socio operador en Antares. Co-lidera la ejecución en Corotos y 7Labs, impulsando gobernanza, métricas y expansión comercial/tecnológica con enfoque en resultados y disciplina operativa.',
+    bullets: [
+      'Corotos — operación y performance comercial',
+      '7Labs — expansión de red y excelencia operativa',
+      'Gobernanza y tableros de KPIs',
+      'Alianzas y mejora continua en procesos',
+    ],
   },
 ];
