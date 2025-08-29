@@ -67,6 +67,12 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
     )
   }
 
+  <!-- Honeypot anti-spam (no llenar) -->
+  <div class="hidden" aria-hidden="true">
+    <label for="empresa_hp" class="block text-sm font-medium">Empresa (no llenar)</label>
+    <input type="text" name="empresa" id="empresa_hp" tabindex="-1" autocomplete="off" class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 bg-white" />
+  </div>
+
   <!-- Hidden fields for attribution -->
   <input type="hidden" name="utm_source" id="utm_source" />
   <input type="hidden" name="utm_medium" id="utm_medium" />
@@ -94,4 +100,6 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
       </div>
     )
   }
+
+  <p class="mt-2 text-xs text-gray-500">Al enviar, acepta nuestra <a href="/privacy" class="underline">Política de Privacidad</a>.</p>
 </form>

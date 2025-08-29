@@ -46,6 +46,19 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"Article",
+      "headline": post.title,
+      "datePublished": post.publishDate?.toISOString?.() || new Date().toISOString(),
+      "dateModified": (post.updateDate && post.updateDate.toISOString && post.updateDate.toISOString()) || (post.publishDate?.toISOString?.() || new Date().toISOString()),
+      "author": {"@type":"Organization","name":"Antares Equity Partners"},
+      "publisher": {"@type":"Organization","name":"Antares Equity Partners"},
+      "mainEntityOfPage": {"@type":"WebPage","@id": String(url)},
+      "image": typeof image === 'string' ? image : (image && image.src) || undefined
+    })}
+  </script>
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>

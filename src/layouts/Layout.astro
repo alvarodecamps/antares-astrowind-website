@@ -45,6 +45,22 @@ const { language, textDirection } = I18N;
         } catch(e) {}
       })();
     </script>
+    <script type="application/ld+json" is:inline>{JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"Antares Equity Partners",
+      "url":"https://antaresep.com",
+      "logo": new URL('/src/assets/images/logo-light.png', Astro.site).toString(),
+      "sameAs":["https://www.linkedin.com/company/antares-equity-partners"],
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Calle Cub Scout #19",
+        "addressLocality":"Santo Domingo",
+        "addressRegion":"DN",
+        "postalCode":"10120",
+        "addressCountry":"DO"
+      }
+    })}</script>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FinancialService",

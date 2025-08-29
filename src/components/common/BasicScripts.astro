@@ -219,8 +219,15 @@ import { UI } from 'astrowind:config';
     function bindSubmit() {
       const form = document.querySelector('form[data-crm-form]');
       if (!form) return;
-      form.addEventListener('submit', async (e) => {
-        try {
+    form.addEventListener('submit', async (e) => {
+      try {
+          // Honeypot: abort if filled
+          const hp = (form.querySelector('#empresa_hp') || {}).value || '';
+          if (hp && hp.trim().length > 0) {
+            e.preventDefault();
+            console.warn('Honeypot triggered');
+            return;
+          }
           // GA event
           if (window.gtag) {
             window.gtag('event', 'form_submit', { id: form.getAttribute('id') || 'lead-form', path: location.pathname });
@@ -266,6 +273,7 @@ import { UI } from 'astrowind:config';
           const from = (form.querySelector('[name="email"]') || {}).value || '';
           const msg = (form.querySelector('[name="mensaje"], #textarea') || {}).value || '';
           const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${from}\nTeléfono: ${phone}\nMensaje: ${msg}\n\nUTM source: ${get('utm_source')}`);
+          alert('Gracias. Se abrirá su correo para enviar el mensaje.');
           window.location.href = `mailto:${email}?subject=Contacto Antares&body=${body}`;
         } catch (err) {
           console.error(err);

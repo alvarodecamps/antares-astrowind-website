@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features from '~/components/widgets/Features.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Brands from '~/components/widgets/Brands.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import heroBg from '~/assets/images/hero-bg.jpg';
@@ -101,6 +102,14 @@ const metadata = {
         icon: 'tabler:arrows-shuffle' ,
       },
     ]}
+  />
+  
+  <!-- Perspectivas teaser -->
+  <BlogLatestPosts
+    title="Perspectivas"
+    linkText="Ver todas las notas"
+    count={3}
+    classes={{ container: 'max-w-6xl mx-auto' }}
   />
   
   <!-- Portafolio Preview Section -->
