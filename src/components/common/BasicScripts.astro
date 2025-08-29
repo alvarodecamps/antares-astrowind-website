@@ -169,6 +169,33 @@ import { UI } from 'astrowind:config';
       const id = el.getAttribute('id') || 'form';
       gtagEvent('form_submit', { id, path: location.pathname });
     });
+
+    // Animated counters
+    const counters = document.querySelectorAll('[data-counter]');
+    if (counters.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            if (el.getAttribute('data-counted') === 'true') return;
+            el.setAttribute('data-counted', 'true');
+            const target = Number(el.getAttribute('data-counter')) || 0;
+            const duration = 800;
+            const start = performance.now();
+            const from = 0;
+            const format = el.getAttribute('data-format') || 'plain';
+            const step = (now: number) => {
+              const t = Math.min(1, (now - start) / duration);
+              const value = Math.floor(from + (target - from) * t);
+              el.textContent = format === 'percent' ? `${value}%` : `${value}`;
+              if (t < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach((c) => io.observe(c));
+    }
   };
   const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');

@@ -4,46 +4,25 @@
 ---
 
 <style is:inline>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Lora:wght@400;500;600;700&display=swap');
   :root {
-    --aw-font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    --aw-font-serif: 'DM Sans', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --aw-font-heading: 'Montserrat', var(--aw-font-sans);
+    /* Typography (Option 1) */
+    --aw-font-sans: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; /* Body */
+    --aw-font-serif: 'Lora', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --aw-font-heading: 'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial;
 
-    /* Colors based on legacy antaresep.com */
-    --aw-color-primary: #9a96aa; /* buttons, hr */
-    --aw-color-secondary: #333333; /* footer, text on light backgrounds */
-    --aw-color-accent: #3a63d4; /* menu button / accents */
+    /* Palette (Option 1: Corporate) */
+    --aw-color-primary: #1A237E; /* Deep navy */
+    --aw-color-secondary: #FFFFFF; /* Clean white (avoid for primary hover text) */
+    --aw-color-accent: #FFCA28; /* Ochre / gold */
 
-    --aw-color-text-heading: #000000;
-    --aw-color-text-default: #222222;
-    --aw-color-text-muted: rgb(34 34 34 / 66%);
-    --aw-color-bg-page: #ffffff;
-
-    --aw-color-bg-page-dark: #030620;
-
-    ::selection {
-      background-color: lavender;
-    }
-  }
-
-  .dark {
-    --aw-font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    --aw-font-serif: 'DM Sans', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --aw-font-heading: 'Montserrat', var(--aw-font-sans);
-
-    --aw-color-primary: #9a96aa;
-    --aw-color-secondary: #9a96aa; /* lighten links on dark */
-    --aw-color-accent: #6f8bf0;
-
-    --aw-color-text-heading: #f7f8f8;
-    --aw-color-text-default: #e5ecf6;
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: #030620;
+    --aw-color-text-heading: #0A0E1A;
+    --aw-color-text-default: #1F2430;
+    --aw-color-text-muted: rgb(31 36 48 / 66%);
+    --aw-color-bg-page: #FFFFFF;
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: #FFEEA8;
     }
   }
 </style>

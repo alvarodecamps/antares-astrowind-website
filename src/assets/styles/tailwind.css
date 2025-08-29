@@ -45,7 +45,7 @@ section.relative[class*="min-h-"] * {
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white;
+    @apply btn font-semibold bg-primary text-white border-primary hover:bg-accent hover:border-accent hover:text-gray-900;
   }
 
   .btn-secondary {

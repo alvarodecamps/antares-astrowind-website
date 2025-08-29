@@ -93,7 +93,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 <>
                   <button
                     type="button"
-                    class="hover:text-link hover:underline underline-offset-4 px-2.5 py-2.5 flex items-center whitespace-nowrap transition-colors duration-200 group"
+                    class="hover:text-accent hover:underline underline-offset-4 px-2.5 py-2.5 flex items-center whitespace-nowrap transition-colors duration-200 group"
                   >
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline transition-transform group-hover:translate-y-0.5" />
@@ -117,7 +117,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'hover:text-link hover:underline underline-offset-4 px-2.5 py-2.5 flex items-center whitespace-nowrap transition-colors duration-200',
+                    'hover:text-accent hover:underline underline-offset-4 px-2.5 py-2.5 flex items-center whitespace-nowrap transition-colors duration-200',
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
