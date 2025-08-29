@@ -5,7 +5,6 @@ export type TeamPerson = {
   linkedin?: string;
   bio?: string;
   bullets?: string[];
-  photo?: string; // path under /public/images or asset import
 };
 
 export const team: TeamPerson[] = [
@@ -14,7 +13,6 @@ export const team: TeamPerson[] = [
     role: 'Socio Director',
     email: 'alvaro@antaresep.com',
     linkedin: 'https://www.linkedin.com/in/alvarodecamps/',
-    photo: '/images/alvaro.jpg',
     bio:
       'Antes de fundar Antares Equity Partners, Alvaro fue analista de inversión en Egis Capital Partners, un fondo de capital privado enfocado en tecnología para los sectores de seguridad y defensa, donde evaluó inversiones de capital de crecimiento y de riesgo. Previamente, lideró la reestructuración de MEC en República Dominicana, incluyendo el turnaround de 100.1 FM, y la expansión a producción y promoción de eventos mediante una alianza con PAV Events. Es MBA por Columbia Business School (Finanzas) y licenciado en Economía (cum laude) por la PUCMM, con enfoque en Negocios Internacionales.',
     bullets: [
@@ -27,7 +25,6 @@ export const team: TeamPerson[] = [
     name: 'Javier Andrés Lara Reinhold',
     role: 'Operaciones — Corotos',
     linkedin: 'https://www.linkedin.com/in/larajavier/',
-    photo: '/images/javier.jpg',
     bio:
       'Operador en Corotos con foco en crecimiento y ejecución. Lidera iniciativas de producto, monetización y eficiencia operativa, trabajando de la mano con la gerencia para consolidar liderazgo y mejorar la experiencia del usuario.',
     bullets: [
@@ -41,7 +38,6 @@ export const team: TeamPerson[] = [
     name: 'Sergio Darío Reyes Galvis',
     role: 'Socio — Operaciones (Corotos, 7Labs)',
     linkedin: 'https://www.linkedin.com/in/sdreyesg/',
-    photo: '/images/sergio.jpg',
     bio:
       'Socio operador en Antares. Co-lidera la ejecución en Corotos y 7Labs, impulsando gobernanza, métricas y expansión comercial/tecnológica con enfoque en resultados y disciplina operativa.',
     bullets: [
